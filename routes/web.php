@@ -15,5 +15,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 });
+Route::get('/greeting', function () {
+    return 'Hello World';
+});
 
 require __DIR__.'/settings.php';
