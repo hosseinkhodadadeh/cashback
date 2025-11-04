@@ -10,14 +10,14 @@ class StoreController extends Controller
 {
     public function getStores(Request $request)
     {
-        // 1. Validate the required input
-        $request->validate([
-            'lat' => 'required|numeric',
-            'lon' => 'required|numeric'
+        
+        $validated = $request->validate([
+            'lat' => ['required', 'numeric', 'between:-90,90'],
+            'lng' => ['required', 'numeric', 'between:-180,180'],
         ]);
 
-        $latitude = $request->input('lat');
-        $longitude = $request->input('lon');
+        $latitude = $validated['lat'];
+        $longitude = $validated['lng'];
        
        $store= new Store();
 
