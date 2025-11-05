@@ -20,4 +20,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 Route::get('/stores', [StoreController::class, 'getStores']);
 
+Route::get('/storelist', function () {
+    return view('storelist', ['name' => 'Hossein']);
+});
+
+
+
 require __DIR__.'/settings.php';

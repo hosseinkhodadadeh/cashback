@@ -19,10 +19,7 @@ class Store extends Model
         ]);
         $places = $placesResponse->json();
 
-        return response()->json([
-            'coordinates' => ['lat' => $lat, 'lng' => $lng],
-            'stores' => $places['results'] ?? []
-        ]);
+        return ($places['results'] ?? []);
 
       
     }

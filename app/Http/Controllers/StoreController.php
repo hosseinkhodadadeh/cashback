@@ -23,10 +23,6 @@ class StoreController extends Controller
 
         $stores = $store->getStores($latitude,$longitude);
 
-        // 3. Return the JSON response
-        return response()->json([
-            'status' => 'success',
-            'data' => $stores
-        ]);
-    }
+        return view('storelist',['stores'=> $stores]);
+}
 }
