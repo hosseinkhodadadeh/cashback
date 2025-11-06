@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 class Store extends Model
 {
     public function getStores($lat,$lng){
-        $radius = '100'; 
+        $radius = '70'; 
         $type = 'store';
         $placesResponse = Http::withoutVerifying()->get("https://maps.googleapis.com/maps/api/place/nearbysearch/json", [
             'location' => "$lat,$lng",

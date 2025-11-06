@@ -10,7 +10,9 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
-import { dashboard } from '@/routes';
+import { dashboard, mycards } from '@/routes';
+import { stores } from '@/routes';
+
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
@@ -22,7 +24,17 @@ const mainNavItems: NavItem[] = [
         href: dashboard(),
         icon: LayoutGrid,
     },
+    {
+        title: 'Store list',
+        href: stores().url,
+        icon: LayoutGrid,
+    },{
+        title: 'My Credit Cards',
+        href: mycards().url,
+        icon: LayoutGrid,
+    },
 ];
+
 
 const footerNavItems: NavItem[] = [
     {
@@ -47,6 +59,7 @@ export function AppSidebar() {
                             <Link href={dashboard()} prefetch>
                                 <AppLogo />
                             </Link>
+                           
                         </SidebarMenuButton>
                     </SidebarMenuItem>
                 </SidebarMenu>

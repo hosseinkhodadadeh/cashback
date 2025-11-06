@@ -18,7 +18,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('dashboard');
 });
 
-Route::get('/stores', [StoreController::class, 'getStores']);
+Route::get('/stores', [StoreController::class, 'getStores'])->name('stores');
+
+
+
+Route::get('/mycards', fn () => Inertia::render('mycards'))->name('mycards');
+
+
 
 Route::get('/storelist', function () {
     return view('storelist', ['name' => 'Hossein']);
