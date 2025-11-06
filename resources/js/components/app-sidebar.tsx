@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/sidebar';
 import { dashboard, mycards } from '@/routes';
 import { stores } from '@/routes';
-
+import { addcard } from '@/routes';
 import { type NavItem } from '@/types';
 import { Link } from '@inertiajs/react';
 import { BookOpen, Folder, LayoutGrid } from 'lucide-react';
@@ -29,6 +29,11 @@ const mainNavItems: NavItem[] = [
         href: stores().url,
         icon: LayoutGrid,
     },{
+        title: 'Add a New Credit Card',
+        href: addcard().url,
+        icon: LayoutGrid,
+    },
+    {
         title: 'My Credit Cards',
         href: mycards().url,
         icon: LayoutGrid,

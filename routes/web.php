@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\CardController;
 
 
 Route::get('/', function () {
@@ -23,7 +24,8 @@ Route::get('/stores', [StoreController::class, 'getStores'])->name('stores');
 
 
 Route::get('/mycards', fn () => Inertia::render('mycards'))->name('mycards');
-
+Route::get('/mycards/add', [CardController::class, 'create'])->name('addcard');
+Route::post('/mycards/new', [CardController::class, 'store'])->name('newcard');
 
 
 Route::get('/storelist', function () {
