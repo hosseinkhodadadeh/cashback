@@ -23,9 +23,23 @@ Route::get('/stores', [StoreController::class, 'getStores'])->name('stores');
 
 
 
-Route::get('/mycards', fn () => Inertia::render('mycards'))->name('mycards');
-Route::get('/mycards/add', [CardController::class, 'create'])->name('addcard');
-Route::post('/mycards/new', [CardController::class, 'store'])->name('newcard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('mycards', [CardController::class, 'mycards']
+    )->name('mycards');
+});
+// Route::get('/mycards', fn () => Inertia::render('mycards'))->name('mycards');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/mycards/add', [CardController::class, 'create'])->name('addcard');
+});
+// Route::get('/mycards/add', [CardController::class, 'create'])->name('addcard');
+
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::post('/mycards/new', [CardController::class, 'store'])->name('newcard');
+});
+// Route::post('/mycards/new', [CardController::class, 'store'])->name('newcard');
 
 
 Route::get('/storelist', function () {

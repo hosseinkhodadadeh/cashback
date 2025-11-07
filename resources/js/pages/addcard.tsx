@@ -2,7 +2,7 @@ import React from 'react';
 import { Head, useForm } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
 
-export default function AddCreditCard() {
+export default function AddCreditCard({cardtypes}) {
   const { data, setData, post, processing, errors, reset } = useForm({
     card_name: '',
     card_id: '',
@@ -60,11 +60,10 @@ export default function AddCreditCard() {
                 onChange={(e) => setData('card_id', e.target.value)}
                 className="w-full border-gray-300 rounded-lg shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
               >
-                <option value="">Select a card type</option>
-                <option value="1">Visa</option>
-                <option value="2">MasterCard</option>
-                <option value="3">American Express</option>
-                <option value="4">Discover</option>
+                {cardtypes.map(card => (
+                  <option value={card.id}>{card.name}</option>
+                ))}
+               
               </select>
               {errors.card_id && (
                 <p className="text-sm text-red-600 mt-1">{errors.card_id}</p>

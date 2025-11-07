@@ -14,55 +14,7 @@ const breadcrumbs: BreadcrumbItem[] = [
 
 
 
-
-
-interface CreditCard {
-  name: string;
-  number: string;
-  holder: string;
-  expiry: string;
-  bg: string;
-}
-
-const sampleCards: CreditCard[] = [
-  {
-    name: 'CIBC Dividend Infinite',
-    number: '**** **** **** 5243',
-    holder: 'HOSSEIN KHODADADEH',
-    expiry: '12/28',
-    bg: 'from-blue-500 to-indigo-700',
-  },
-  {
-    name: 'Rogers World Elite',
-    number: '**** **** **** 1832',
-    holder: 'HOSSEIN KHODADADEH',
-    expiry: '08/27',
-    bg: 'from-red-500 to-pink-600',
-  },
-  {
-    name: 'Costco Mastercard',
-    number: '**** **** **** 9031',
-    holder: 'HOSSEIN KHODADADEH',
-    expiry: '03/26',
-    bg: 'from-gray-700 to-gray-900',
-  },
-  {
-    name: 'Scotiabank Gold Amex',
-    number: '**** **** **** 1120',
-    holder: 'HOSSEIN KHODADADEH',
-    expiry: '10/29',
-    bg: 'from-yellow-500 to-amber-700',
-  },
-  {
-    name: 'Tangerine Money-Back',
-    number: '**** **** **** 7794',
-    holder: 'HOSSEIN KHODADADEH',
-    expiry: '01/30',
-    bg: 'from-orange-500 to-red-600',
-  },
-];
-
-export default function CreditCards() {
+export default function creditCards({cards}) {
   return (
     <AppLayout>
       <Head title="My Credit Cards" />
@@ -72,38 +24,32 @@ export default function CreditCards() {
         </h1>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 max-w-6xl w-full">
-          {sampleCards.map((card, index) => (
+          {cards.map((card, index) => (
             <div
               key={index}
-              className={`rounded-2xl text-white p-6 shadow-xl bg-gradient-to-br ${card.bg} transition transform hover:scale-105`}
+              className={`rounded-2xl text-white p-6 shadow-xl bg-gradient-to-br from-red-500 to-pink-600 transition transform hover:scale-105`}
             >
               <div className="flex justify-between items-center mb-6">
-                <span className="text-lg font-semibold">{card.name}</span>
+                <span className="text-lg font-semibold">{card.card_name}</span>
                 <img
-                  src={
-                    card.name.includes('Mastercard')
-                      ? 'https://upload.wikimedia.org/wikipedia/commons/0/04/Mastercard-logo.png'
-                      : card.name.includes('Amex')
-                      ? 'https://upload.wikimedia.org/wikipedia/commons/3/30/American_Express_logo_%282018%29.svg'
-                      : 'https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg'
-                  }
+                  src={card.type.bg_image}
                   alt="Card logo"
                   className="h-6 w-auto"
                 />
               </div>
 
               <div className="text-xl tracking-widest font-mono mb-4">
-                {card.number}
+                {card.name}
               </div>
 
               <div className="flex justify-between text-sm">
                 <div>
-                  <p className="opacity-80">Card Holder</p>
-                  <p className="font-semibold">{card.holder}</p>
+                  <p className="opacity-80">Card Type</p>
+                  <p className="font-semibold">{card.type.name}</p>
                 </div>
                 <div>
                   <p className="opacity-80">Expires</p>
-                  <p className="font-semibold">{card.expiry}</p>
+                  <p className="font-semibold">In the Future</p>
                 </div>
               </div>
             </div>
